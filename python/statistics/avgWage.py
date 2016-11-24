@@ -6,9 +6,9 @@ from pyspark import SparkContext
 sc = SparkContext()
 # read types
 reader=open("/home/edu/mif/python/zwj/data/types.txt")
-types=set(x[0:-2] for x in reader)
+types=set(x[0:-1] for x in reader)
 
-# data = sc.textFile("/mif/lines50.txt")
+#data = sc.textFile("/mif/lines50.txt")
 data=sc.textFile("/mif/data/mode_ac43_310.txt")
 data = data.map(lambda line: line.encode('utf-8').split(",")) \
     .filter(lambda line: line[3] == '310' and (line[4] in types) and line[5] != "") \

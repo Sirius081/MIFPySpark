@@ -3,7 +3,7 @@ from pyspark import SparkContext
 sc = SparkContext()
 data=sc.textFile("/mif/data/mode_ac43_310.txt")
 reader=open("/home/edu/mif/python/zwj/data/types.txt")
-types=set(x[0:-2] for x in reader)
+types=set(x[0:-1] for x in reader)
 # data = sc.textFile("/mif/lines50.txt")
 # split
 # filter
