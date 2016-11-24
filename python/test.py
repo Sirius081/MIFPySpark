@@ -1,2 +1,3 @@
-a=(1,2)
-print(str(a))
+a="fdsfds\n"
+print (a[0:-2])
+print(a)
