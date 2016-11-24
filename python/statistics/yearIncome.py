@@ -4,7 +4,7 @@ from numpy import array
 # 统计每一年总收入
 
 sc = SparkContext()
-data = sc.textFile("/mif/mode_ac43_310.txt")
+data = sc.textFile("/mif/data/mode_ac43_310.txt")
 # data = sc.textFile("/mif/lines50.txt")
 # reader = open("/home/edu/mif/data/chargeType.txt")
 # types = []
