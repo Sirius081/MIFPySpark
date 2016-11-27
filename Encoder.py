@@ -1,6 +1,6 @@
-fn="/home/edu/mif/data/sample/职工住院明细信息.txt"
+fn="/home/edu/mif/data/职工慢性病登记信息.txt"
 reader=open(fn)
-writer=open("/home/edu/mif/data/sampleUtf-8/worker_hospital_detail_lines50.txt","w")
+writer=open("/home/edu/mif/data/worker_chronic_regist.txt","w")
 while True:
     line=reader.readline().decode('gbk').encode('utf-8')
     writer.write(line)
