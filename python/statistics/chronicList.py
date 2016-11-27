@@ -2,7 +2,8 @@ from pyspark import SparkContext
 
 # chronicname,1
 sc=SparkContext()
-data=sc.textFile("/mif/data/sampleUtf-8/worker_chronic_regist_lines50.txt")\
+# data=sc.textFile("/mif/data/sampleUtf-8/worker_chronic_regist_lines50.txt")\
+data=sc.textFile("/mif/data/worker_chronic_regist.txt")\
     .map(lambda line :line.encode('utf-8').split(","))\
     .map(lambda line:((line[2]),1))\
     .reduceByKey(lambda a,b:a+b) \
