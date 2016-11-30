@@ -1,22 +1,26 @@
 from pyspark import SparkContext
+
 # split
 # (year,disease),(fee,group,population)
-sc=SparkContext()
+sc = SparkContext()
 
 import sys
-reload(sys)
-sys.setdefaultencoding( "utf-8" )
 
-data=sc.textFile("/mif/data/worker_hospital.txt")\
-    .map(lambda line :line.split(','))\
-    .filter(lambda line:line[6]!='' and line[15]!='')\
-    .map(lambda line:((int(line[20][-2:]),line[23]),(float(line[6]),float(line[15]),1)))\
-    .reduceByKey(lambda a,b:(a[0]+b[0],a[1]+b[1],a[2]+b[2]))\
-    .map(lambda (k,v):((k[0],v[0]/v[2]),k[1]))\
-    .sortByKey()\
+reload(sys)
+sys.setdefaultencoding("utf-8")
+# filter fee !='' group !=''
+# disease,(fee,group,1)
+# disease,(sum_fee,sum_group,count)
+# sort
+data = sc.textFile("/mif/data/worker_hospital.txt") \
+    .map(lambda line: line.split(',')) \
+    .filter(lambda line: line[6] != '' and line[15] != '') \
+    .map(lambda line: (line[23].replace(',',''), (float(line[6]), float(line[15]), 1))) \
+    .reduceByKey(lambda a, b: (a[0] + b[0], a[1] + b[1], a[2] + b[2])) \
+    .sortByKey() \
     .collect()
 
 out = open('/home/edu/mif/python/zwj/output/data.txt', 'w')
-for ((year,v),disease) in data:
-    out.write("%s,%.2f,%s\n" % (year,v,disease))
+for (disease, (sum_fee, sum_group, count)) in data:
+    out.write("%s,%.2f,%.2f,%d\n" % (disease, sum_fee, sum_group, count))
 out.close()

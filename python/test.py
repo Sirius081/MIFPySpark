@@ -1,3 +1,2 @@
-a="fdsfds\n"
-print (a[0:-2])
-print(a)
+a={1:2}
+print(1 in a.keys())
