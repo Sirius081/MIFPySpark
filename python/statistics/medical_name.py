@@ -12,5 +12,8 @@ data = data.sortBy(lambda (k, v): (v, k),False).collect()
 
 out = open('/home/edu/mif/python/zwj/output/data.txt', 'w')
 for (k, v) in data:
-    out.write("%s,%d"%(k,v))
+    try:
+        out.write("%s,%d"%(k,v))
+    except Exception:
+        continue
 out.close()
