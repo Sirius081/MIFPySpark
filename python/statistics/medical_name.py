@@ -13,7 +13,7 @@ data = data.sortBy(lambda (k, v): (v, k),False).collect()
 out = open('/home/edu/mif/python/zwj/output/data.txt', 'w')
 for (k, v) in data:
     try:
-        out.write("%s,%d"%(k,v))
+        out.write("%s,%d\n"%(k.encode("utf-8"),v))
     except Exception:
         continue
 out.close()
