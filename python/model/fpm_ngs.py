@@ -22,5 +22,5 @@ fitems = model.freqItemsets().collect()
 out = open('/home/edu/mif/python/zwj/output/data.txt', 'w')
 for itemset in fitems:
     line = reduce(lambda a, b: "%s\t%s"%(a,b), itemset.items).encode("utf-8")
-    out.write("%s\n" % (line))
+    out.write("%d\t%s\n" % (itemset.freq,line))
 out.close()
