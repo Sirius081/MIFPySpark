@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
-#pyFile=sample/NGSdetail.py
+pyFile=sample/disease.py
 #pyFile=statistics/sampleNGSdetail.py
-pyFile=model/fpm_ngs.py
+#pyFile=model/fpm_ngs.py
 dataPath=/home/edu/mif/python/zwj/output/data.txt
 scp python/${pyFile} edu@blade-83:~/mif/python/zwj/python/${pyFile}
 ssh edu@blade-83 "rm  ${dataPath};spark-submit --num-executors 6 \
