@@ -17,11 +17,11 @@ sys.setdefaultencoding("utf-8")
 data = sc.textFile("/mif/data/worker_hospital.txt") \
     .map(lambda line: line.split(',')) \
     .filter(lambda line: line[6] != '' and line[15] != '') \
-    .map(lambda line: (line[23].replace(',',''), (float(line[6]), float(line[15]), 1))) \
+    .map(lambda line: (line[23].replace(',', ''), (float(line[6]), float(line[15]), 1))) \
     .reduceByKey(lambda a, b: (a[0] + b[0], a[1] + b[1], a[2] + b[2])) \
-    .map(lambda (k,v):(v[0],(k,v[1],v[2])))\
+    .map(lambda (k, v): (v[0], (k, v[1], v[2]))) \
     .sortByKey() \
-    .map(lambda (k,v):(v[0],(k,v[1],v[2])))\
+    .map(lambda (k, v): (v[0], (k, v[1], v[2]))) \
     .collect()
 
 out = open('/home/edu/mif/python/zwj/output/data.txt', 'w')

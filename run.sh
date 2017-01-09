@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-pyFile=sample/disease.py
-#pyFile=statistics/sampleNGSdetail.py
+#pyFile=sample/diseaseFeeByYear.py
+pyFile=statistics/diseaseFeeByYear.py
 #pyFile=model/fpm_ngs.py
 dataPath=/home/edu/mif/python/zwj/output/data.txt
 scp python/${pyFile} edu@blade-83:~/mif/python/zwj/python/${pyFile}
